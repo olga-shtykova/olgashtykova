@@ -87,6 +87,7 @@
     -webkit-backdrop-filter: blur(10px);
   }
   .topnav .brand{ color:#fff; font-weight:700; font-size: 1rem; letter-spacing: 0.02em; }
+  .nav-right{ display:flex; align-items:center; gap: 1.75rem; }
   .topnav nav{ display:flex; gap: 22px; }
   .topnav nav a{ color: rgba(255,255,255,0.85); font-size: 0.92rem; }
   .topnav nav a:hover{ color:#fff; text-decoration: none; }
@@ -268,19 +269,21 @@
 
   <div class="topnav">
     <span class="brand">Olga Shtykova</span>
-    <nav>
-      <a href="#about" data-i18n="navAbout">About</a>
-      <a href="#work" data-i18n="navWork">What I Do</a>
-      <a href="#facts" data-i18n="navFacts">Facts</a>
-    </nav>
-    <div class="langswitch" role="group" aria-label="Language switcher">
-      <button type="button" data-lang="en" class="active">EN</button>
-      <button type="button" data-lang="ru">RU</button>
+    <div class="nav-right">
+      <nav>
+        <a href="#about" data-i18n="navAbout">About</a>
+        <a href="#work" data-i18n="navWork">What I Do</a>
+        <a href="#facts" data-i18n="navFacts">Facts</a>
+      </nav>
+      <div class="langswitch" role="group" aria-label="Language switcher">
+        <button type="button" data-lang="en" class="active">EN</button>
+        <button type="button" data-lang="ru">RU</button>
+      </div>
+      <button type="button" class="theme-toggle" id="themeToggle" aria-label="Switch to dark theme" aria-pressed="false">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+      </button>
     </div>
-    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Switch to dark theme" aria-pressed="false">
-      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
-    </button>
   </div>
 
   <header class="hero" role="img" aria-label="Business analysis and .NET development, empowered by AI"></header>
@@ -351,7 +354,7 @@
         </div>
         <div class="fact-grid" style="margin-top:36px;">
           <div class="fact"><div class="icon">🌍</div><p data-i18n="fact3">Lived in the USA for 10 years and in Denmark for 3 months; have also traveled to China, India, and several countries across Europe.</p></div>
-          <div class="fact"><div class="icon">🎨</div><p data-i18n="fact8html">An artist at heart — I draw and paint in watercolor and oil. <a href="https://olga-shtykova.github.io/olgashtykova/" target="_blank" rel="noopener">View my art →</a></p></div>
+          <div class="fact"><div class="icon">🎨</div><p data-i18n="fact8html">An artist at heart — I draw and paint in watercolor and oil. <a href="https://olga-shtykova.github.io/artist-olgashtykova/" target="_blank" rel="noopener">View my art</a></p></div>
           <div class="fact"><div class="icon">🎵</div><p data-i18n="fact9">Music has been part of my life since childhood. I studied choir, piano, solfeggio, and music history.</p></div>
           <div class="fact"><div class="icon">🧘</div><p data-i18n="fact10">I practice yoga, meditation, and mindfulness as a way to maintain balance, focus, and well-being.</p></div>
         </div>
@@ -416,7 +419,7 @@
       factsEyebrow: "Beyond the CV",
       factsHeading: "Interesting Facts",
       fact3: "Lived in the USA for 10 years and in Denmark for 3 months; have also traveled to China, India, and several countries across Europe.",
-      fact8html: 'An artist at heart — I draw and paint in watercolor and oil. <a href="https://olga-shtykova.github.io/olgashtykova/" target="_blank" rel="noopener">View my art →</a>',
+      fact8html: 'An artist at heart — I draw and paint in watercolor and oil. <a href="https://olga-shtykova.github.io/artist-olgashtykova/" target="_blank" rel="noopener">View my art</a>',
       fact9: "Music has been part of my life since childhood. I studied choir, piano, solfeggio, and music history.",
       fact10: "I practice yoga, meditation, and mindfulness as a way to maintain balance, focus, and well-being.",
       connectTexthtml: 'Let\'s connect on <a href="https://www.linkedin.com/in/olga-shtykova/" target="_blank" rel="noopener">LinkedIn</a> and explore opportunities to collaborate.',
@@ -453,7 +456,7 @@
       factsEyebrow: "Не только резюме",
       factsHeading: "Интересные факты",
       fact3: "Прожила 10 лет в США и 3 месяца в Дании; путешествовала по Китаю, Индии и многим странам Европы.",
-      fact8html: 'В душе художница — рисую акварелью и маслом. <a href="https://olga-shtykova.github.io/olgashtykova/" target="_blank" rel="noopener">Мои работы →</a>',
+      fact8html: 'В душе художница — рисую акварелью и маслом. <a href="https://olga-shtykova.github.io/artist-olgashtykova/" target="_blank" rel="noopener">Мои работы</a>',
       fact9: "Музыка была частью моей жизни с детства. Я занималась в хоре, играла на фортепиано, изучала сольфеджио и историю музыки.",
       fact10: "Я практикую йогу, медитацию и осознанность, чтобы поддерживать баланс, концентрацию и внутреннее благополучие.",
       connectTexthtml: 'Давайте свяжемся в <a href="https://www.linkedin.com/in/olga-shtykova/" target="_blank" rel="noopener">LinkedIn</a> и обсудим возможности для сотрудничества.',
