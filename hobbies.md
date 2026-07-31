@@ -1,6 +1,6 @@
 ## My Interests & Hobbies
 
-- **Art** — I draw and paint, working in both watercolor and oil. You can see my artworks [here](https://olga-shtykova.github.io/olgashtykova/).
+- **Art** — I draw and paint, working in both watercolor and oil. You can see my artworks [here](https://olga-shtykova.github.io/artist-olgashtykova/).
 - **Music** — I sang in a choir for many years, an interest rooted in a
   childhood music education in choir, piano, solfeggio, and music history
   that my parents encouraged to nurture a natural talent.
