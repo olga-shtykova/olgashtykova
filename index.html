@@ -99,7 +99,7 @@
     padding: 6px 14px; font-size: 0.82rem; font-weight:600; cursor:pointer;
     letter-spacing: 0.03em;
   }
-  .langswitch button.active{ background: var(--accent); color:#fff; }
+  .langswitch button.active{ background: #6C5CE7; color:#fff; }
 
   .theme-toggle{
     display:flex; align-items:center; justify-content:center;
@@ -257,6 +257,7 @@
   (function(){
     var stored = null;
     try{ stored = localStorage.getItem('theme'); }catch(e){}
+    if(stored !== 'light' && stored !== 'dark'){ stored = null; }
     var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
     var theme = stored || (prefersDark ? 'dark' : 'light');
     document.documentElement.setAttribute('data-theme', theme);
@@ -491,20 +492,22 @@
 </script>
 
 <script>
-  var themeToggle = document.getElementById('themeToggle');
-  function applyThemeButtonState(theme){
-    var isDark = theme === 'dark';
-    themeToggle.setAttribute('aria-pressed', isDark);
-    themeToggle.setAttribute('aria-label', isDark ? 'Switch to light theme' : 'Switch to dark theme');
-  }
-  applyThemeButtonState(document.documentElement.getAttribute('data-theme'));
-  themeToggle.addEventListener('click', function(){
-    var current = document.documentElement.getAttribute('data-theme');
-    var next = current === 'dark' ? 'light' : 'dark';
-    document.documentElement.setAttribute('data-theme', next);
-    try{ localStorage.setItem('theme', next); }catch(e){}
-    applyThemeButtonState(next);
-  });
+  (function(){
+    var themeToggle = document.getElementById('themeToggle');
+    function applyThemeButtonState(theme){
+      var isDark = theme === 'dark';
+      themeToggle.setAttribute('aria-pressed', isDark);
+      themeToggle.setAttribute('aria-label', isDark ? 'Switch to light theme' : 'Switch to dark theme');
+    }
+    applyThemeButtonState(document.documentElement.getAttribute('data-theme'));
+    themeToggle.addEventListener('click', function(){
+      var current = document.documentElement.getAttribute('data-theme');
+      var next = current === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      try{ localStorage.setItem('theme', next); }catch(e){}
+      applyThemeButtonState(next);
+    });
+  })();
 </script>
 </body>
 </html>
