@@ -16,9 +16,48 @@
     --night: #0A0A14;
     --night-soft: #17162A;
     --line: #E6E3F2;
+    --surface: #FFFFFF;
     --radius: 18px;
     --maxw: 1080px;
     font-size: 16px;
+  }
+
+  @media (prefers-color-scheme: dark){
+    :root{
+      --ink: #F1EFFA;
+      --ink-soft: #B8B4CC;
+      --paper: #100F1B;
+      --paper-alt: #17162A;
+      --surface: #1E1D30;
+      --line: #2C2A42;
+      --accent-tint: #2A2650;
+      --accent: #9C8CFF;
+      --accent-dark: #C9C1FF;
+    }
+  }
+
+  :root[data-theme="light"]{
+    --ink: #1B1B23;
+    --ink-soft: #52515E;
+    --paper: #FAFAFC;
+    --paper-alt: #F1EEFB;
+    --surface: #FFFFFF;
+    --line: #E6E3F2;
+    --accent-tint: #EFECFE;
+    --accent: #6C5CE7;
+    --accent-dark: #4B3FC4;
+  }
+
+  :root[data-theme="dark"]{
+    --ink: #F1EFFA;
+    --ink-soft: #B8B4CC;
+    --paper: #100F1B;
+    --paper-alt: #17162A;
+    --surface: #1E1D30;
+    --line: #2C2A42;
+    --accent-tint: #2A2650;
+    --accent: #9C8CFF;
+    --accent-dark: #C9C1FF;
   }
 
   *{ box-sizing: border-box; }
@@ -91,7 +130,7 @@
   .about-photo{
     width:100%; aspect-ratio: 4/5; border-radius: var(--radius);
     overflow:hidden; box-shadow: 0 20px 40px -18px rgba(76,63,196,0.45);
-    border: 6px solid #fff; outline: 1px solid var(--line);
+    border: 6px solid var(--surface); outline: 1px solid var(--line);
   }
   .about-photo img{ width:100%; height:100%; object-fit:cover; }
   .about-text p{ color: var(--ink-soft); margin: 0 0 18px; font-size: 1.02rem; }
@@ -117,7 +156,7 @@
   .work-intro{ color: var(--ink-soft); max-width: 640px; margin-top: -18px; margin-bottom: 30px; }
   .card-grid{ display:grid; grid-template-columns: 1fr 1fr; gap: 22px; }
   .card{
-    background:#fff; border: 1px solid var(--line); border-radius: var(--radius);
+    background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
     padding: 26px; position:relative;
   }
   .card h3{ font-size: 1.12rem; margin-bottom: 6px; }
@@ -134,7 +173,7 @@
   }
   .fact{
     border: 1px solid var(--line); border-radius: var(--radius);
-    padding: 24px; background: #fff;
+    padding: 24px; background: var(--surface);
   }
   .fact .icon{
     width: 44px; height:44px; border-radius: 50%; background: var(--accent-tint);
@@ -197,6 +236,16 @@
   footer .credit{ margin-top: 8px; font-size: 0.78rem; color: rgba(255,255,255,0.45); }
   footer a{ color: #C9C1FF; font-weight:600; }
 </style>
+
+<script>
+  (function(){
+    var stored = null;
+    try{ stored = localStorage.getItem('theme'); }catch(e){}
+    var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    var theme = stored || (prefersDark ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', theme);
+  })();
+</script>
 </head>
 <body>
 
