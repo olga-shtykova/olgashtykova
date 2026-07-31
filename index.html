@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Olga Shtykova — Business Analyst &amp; AI-Fluent Technologist</title>
+<style>
+  :root{
+    --accent: #6C5CE7;
+    --accent-dark: #4B3FC4;
+    --accent-tint: #EFECFE;
+    --ink: #1B1B23;
+    --ink-soft: #52515E;
+    --paper: #FAFAFC;
+    --paper-alt: #F1EEFB;
+    --night: #0A0A14;
+    --night-soft: #17162A;
+    --line: #E6E3F2;
+    --radius: 18px;
+    --maxw: 1080px;
+    font-size: 16px;
+  }
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+  body{
+    margin:0;
+    font-family: "Segoe UI", Inter, ui-sans-serif, system-ui, -apple-system, Roboto, Helvetica, Arial, sans-serif;
+    color: var(--ink);
+    background: var(--paper);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  img{ max-width:100%; display:block; }
+  a{ color: var(--accent-dark); text-decoration: none; }
+  a:hover{ text-decoration: underline; }
+  h1,h2,h3{ font-weight: 700; letter-spacing: -0.01em; margin: 0; }
+  .wrap{ max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+  section{ padding: clamp(56px, 9vw, 108px) 0; }
+
+  /* ---------- Top nav ---------- */
+  .topnav{
+    position: fixed; top:0; left:0; right:0; z-index: 50;
+    display:flex; align-items:center; justify-content:space-between;
+    padding: 14px 24px;
+    background: rgba(10,10,20,0.35);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+  .topnav .brand{ color:#fff; font-weight:700; font-size: 1rem; letter-spacing: 0.02em; }
+  .topnav nav{ display:flex; gap: 22px; }
+  .topnav nav a{ color: rgba(255,255,255,0.85); font-size: 0.92rem; }
+  .topnav nav a:hover{ color:#fff; text-decoration: none; }
+  .langswitch{
+    display:flex; border: 1px solid rgba(255,255,255,0.35); border-radius: 999px; overflow:hidden;
+    background: rgba(255,255,255,0.08);
+  }
+  .langswitch button{
+    border:0; background: transparent; color: rgba(255,255,255,0.8);
+    padding: 6px 14px; font-size: 0.82rem; font-weight:600; cursor:pointer;
+    letter-spacing: 0.03em;
+  }
+  .langswitch button.active{ background: var(--accent); color:#fff; }
+
+  @media (max-width: 720px){
+    .topnav nav{ display:none; }
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    width: 100%;
+    aspect-ratio: 1774 / 898;
+    background: url("images/image1.png") center/cover no-repeat;
+  }
+  @media (max-width: 720px){
+    .hero{ aspect-ratio: 4 / 3; }
+  }
+
+  /* ---------- Section headings ---------- */
+  .eyebrow{
+    color: var(--accent-dark); font-weight:700; font-size: 0.8rem;
+    text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 10px;
+  }
+  .section-title{ font-size: clamp(1.8rem, 4vw, 2.5rem); margin-bottom: 32px; }
+
+  /* ---------- About ---------- */
+  .about{ background: var(--paper); }
+  .about-grid{
+    display:grid; grid-template-columns: 300px 1fr; gap: 52px; align-items:start;
+  }
+  .about-photo{
+    width:100%; aspect-ratio: 4/5; border-radius: var(--radius);
+    overflow:hidden; box-shadow: 0 20px 40px -18px rgba(76,63,196,0.45);
+    border: 6px solid #fff; outline: 1px solid var(--line);
+  }
+  .about-photo img{ width:100%; height:100%; object-fit:cover; }
+  .about-text p{ color: var(--ink-soft); margin: 0 0 18px; font-size: 1.02rem; }
+  .about-text p:last-of-type{ margin-bottom: 22px; }
+  .badge{
+    display:inline-block; background: var(--accent-tint); color: var(--accent-dark);
+    font-weight:600; font-size: 0.85rem; padding: 8px 16px; border-radius: 999px;
+  }
+  @media (max-width: 760px){
+    .about-grid{ grid-template-columns: 1fr; }
+    .about-photo{ max-width: 280px; margin: 0 auto; aspect-ratio: 1/1; }
+  }
+
+  /* ---------- Work ---------- */
+  .work{ background: var(--paper-alt); }
+  .work-head{
+    display:flex; align-items:center; gap: 22px; margin-bottom: 36px; flex-wrap: wrap;
+  }
+  .work-head img{
+    width: 76px; height:76px; border-radius: 16px; object-fit: cover;
+    box-shadow: 0 10px 26px -12px rgba(76,63,196,0.5);
+  }
+  .work-intro{ color: var(--ink-soft); max-width: 640px; margin-top: -18px; margin-bottom: 30px; }
+  .card-grid{ display:grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+  .card{
+    background:#fff; border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 26px; position:relative;
+  }
+  .card h3{ font-size: 1.12rem; margin-bottom: 6px; }
+  .card .meta{ color: var(--accent-dark); font-size: 0.82rem; font-weight:600; margin-bottom: 12px; }
+  .card p{ color: var(--ink-soft); font-size: 0.96rem; margin:0; }
+  @media (max-width: 760px){
+    .card-grid{ grid-template-columns: 1fr; }
+  }
+
+  /* ---------- Facts ---------- */
+  .facts{ background: var(--paper); }
+  .fact-grid{
+    display:grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+  }
+  .fact{
+    border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 24px; background: #fff;
+  }
+  .fact .icon{
+    width: 44px; height:44px; border-radius: 50%; background: var(--accent-tint);
+    display:flex; align-items:center; justify-content:center; font-size: 1.2rem;
+    margin-bottom: 14px;
+  }
+  .fact p{ margin:0; color: var(--ink-soft); font-size: 0.95rem; }
+  .fact a{ font-weight:600; }
+  @media (max-width: 900px){ .fact-grid{ grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 560px){ .fact-grid{ grid-template-columns: 1fr; } }
+
+  /* ---------- Connect ---------- */
+  .connect-section{
+    background: var(--accent-tint); text-align:center;
+    padding: clamp(40px, 6vw, 64px) 0;
+  }
+  .connect-inner{
+    display:flex; flex-direction:column; align-items:center; gap:14px;
+  }
+  .connect-icon{
+    width: 34px; height:34px; padding:7px; border-radius:50%;
+    background: var(--accent); fill:#fff; flex-shrink:0;
+  }
+  .connect-section p{
+    margin:0; font-size: clamp(1.05rem, 2vw, 1.25rem); font-weight:600; color: var(--ink);
+  }
+  .connect-section a{
+    color: var(--accent-dark); text-decoration: underline;
+  }
+
+  /* ---------- Quote ---------- */
+  .quote-section{
+    position:relative;
+    min-height: 60vh;
+    display:flex; align-items:center; justify-content:center;
+    background-color:#0a0a14;
+    background-image:url("images/image4.png");
+    background-position:center;
+    background-size:contain;
+    background-repeat:no-repeat;
+    color:#fff; text-align:center;
+  }
+  .quote-section::before{
+    content:""; position:absolute; inset:0;
+    background: linear-gradient(180deg, rgba(8,8,16,0.75), rgba(8,8,16,0.88));
+  }
+  .quote-inner{ position:relative; z-index:1; width:100%; max-width: 720px; margin:0 auto; }
+  .quote-inner blockquote{
+    margin:0 0 20px; font-size: clamp(1.3rem, 3vw, 1.9rem); font-weight:600; line-height:1.4;
+    font-style: italic;
+  }
+  .quote-inner cite{ color: #C9C1FF; font-style:normal; font-weight:600; }
+
+  /* ---------- Footer ---------- */
+  footer{
+    background: var(--night-soft); color: rgba(255,255,255,0.75);
+    padding: 34px 0; text-align:center; font-size: 0.9rem;
+  }
+  footer p{ margin:0; }
+  footer .credit{ margin-top: 8px; font-size: 0.78rem; color: rgba(255,255,255,0.45); }
+  footer a{ color: #C9C1FF; font-weight:600; }
+</style>
+</head>
+<body>
+
+  <div class="topnav">
+    <span class="brand">Olga Shtykova</span>
+    <nav>
+      <a href="#about" data-i18n="navAbout">About</a>
+      <a href="#work" data-i18n="navWork">What I Do</a>
+      <a href="#facts" data-i18n="navFacts">Facts</a>
+    </nav>
+    <div class="langswitch" role="group" aria-label="Language switcher">
+      <button type="button" data-lang="en" class="active">EN</button>
+      <button type="button" data-lang="ru">RU</button>
+    </div>
+  </div>
+
+  <header class="hero" role="img" aria-label="Business analysis and .NET development, empowered by AI"></header>
+
+  <main>
+    <section class="about" id="about">
+      <div class="wrap about-grid">
+        <div class="about-photo">
+          <img src="images/olga.JPG" alt="Portrait of Olga Shtykova">
+        </div>
+        <div class="about-text">
+          <div class="eyebrow" data-i18n="aboutEyebrow">Who I Am</div>
+          <h2 class="section-title" data-i18n="aboutHeading">About Me</h2>
+          <p data-i18n="aboutP1html">Hi, I'm <strong>Olga Shtykova</strong> — a Business Analyst who enjoys bringing clarity to complexity. I work at the intersection of business and technology, helping stakeholders and delivery teams turn ideas into well-defined, practical solutions that create real value.</p>
+          <p data-i18n="aboutP2">My path into business analysis wasn't a traditional one. I began my career as a .NET Software Engineer before transitioning into business analysis, giving me a strong technical foundation and the ability to communicate comfortably with both business stakeholders and development teams.</p>
+          <p data-i18n="aboutP3">My background combines psychology, software engineering, and business analysis. Psychology shapes how I approach communication and collaboration, while my technical education helps me understand complex systems and contribute effectively throughout the software delivery lifecycle.</p>
+          <p data-i18n="aboutP4">I'm also passionate about using AI to work more effectively. I regularly apply modern AI tools to streamline documentation, analyse business processes, map user journeys, and automate repetitive tasks — freeing up more time to focus on solving problems and delivering value.</p>
+          <p data-i18n="aboutP5">I'm naturally curious and enjoy continuously learning new technologies, methodologies, and ways of improving how people and teams work together.</p>
+          <span class="badge" data-i18n="aboutBadge">Fluent in English · Native Russian</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="work" id="work">
+      <div class="wrap">
+        <div class="work-head">
+          <img src="images/image2.png" alt="Projects icon">
+          <div>
+            <div class="eyebrow" data-i18n="workEyebrow">Experience</div>
+            <h2 class="section-title" style="margin-bottom:0" data-i18n="workHeading">What I Do</h2>
+          </div>
+        </div>
+        <p class="work-intro" data-i18n="workIntro">From building software to shaping solutions — a look at the projects that guided my transition from software engineering to business analysis.</p>
+
+        <div class="card-grid">
+          <div class="card">
+            <h3 data-i18n="work1Title">Ticketmaster UK — Business Analyst</h3>
+            <div class="meta" data-i18n="work1Meta">EPAM Systems · Jun 2024 – Jun 2026</div>
+            <p data-i18n="work1Desc">Helped bridge business needs and technical implementation across the full delivery lifecycle for one of the world's leading ticketing platforms. Led requirements coordination for an initiative enabling secure third-party API access, working closely with stakeholders, architects, developers, and QA to keep everyone aligned on complex functionality — bringing structure to ambiguity and documentation that let teams move forward with confidence.</p>
+          </div>
+          <div class="card">
+            <h3 data-i18n="work2Title">Ticketmaster UK — Software Engineer</h3>
+            <div class="meta" data-i18n="work2Meta">EPAM Systems · Feb 2021 – Jun 2024</div>
+            <p data-i18n="work2Desc">Spent over three years developing and maintaining services within Ticketmaster's event-driven microservices platform using ASP.NET/ASP.NET Core, delivering new functionality and resolving production issues for a system used by millions of customers. Maintained CI/CD pipelines, worked with SQL Server, supported AWS deployments, implemented automated testing, and monitored production — collaboration with business analysts and product managers that ultimately inspired my move into business analysis.</p>
+          </div>
+          <div class="card">
+            <h3 data-i18n="work3Title">Health and Wellness Portal — Business Analyst</h3>
+            <div class="meta" data-i18n="work3Meta">EPAM Systems · Jan 2022 – Apr 2023</div>
+            <p data-i18n="work3Desc">Joined an internal EPAM project as a Business Analyst alongside my engineering role, supporting an employee health and wellness platform. Gathered and refined requirements, prepared user stories and use cases, facilitated backlog refinement sessions, and worked closely with developers and QA — building my confidence in leading discussions and translating ideas into clear, actionable requirements.</p>
+          </div>
+          <div class="card">
+            <h3 data-i18n="work4Title">EPAM Training Portal (training.by) — Student Software Engineer</h3>
+            <div class="meta" data-i18n="work4Meta">EPAM Systems · Nov 2020 – Feb 2021</div>
+            <p data-i18n="work4Desc">My first opportunity to contribute to a real enterprise application: developed new functionality, fixed defects, and wrote automated tests using the .NET ecosystem while learning modern development practices in a collaborative team — a technical foundation that continues to support my work as a Business Analyst.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="facts" id="facts">
+      <div class="wrap">
+        <div class="work-head">
+          <img src="images/image3.png" alt="Requirements checklist icon">
+          <div>
+            <div class="eyebrow" data-i18n="factsEyebrow">Beyond the CV</div>
+            <h2 class="section-title" style="margin-bottom:0" data-i18n="factsHeading">Interesting Facts</h2>
+          </div>
+        </div>
+        <div class="fact-grid" style="margin-top:36px;">
+          <div class="fact"><div class="icon">🌍</div><p data-i18n="fact3">Lived in the USA for 10 years and in Denmark for 3 months; have also traveled to China, India, and several countries across Europe.</p></div>
+          <div class="fact"><div class="icon">🎨</div><p data-i18n="fact8html">An artist at heart — I draw and paint in watercolor and oil. <a href="https://olga-shtykova.github.io/olgashtykova/" target="_blank" rel="noopener">View my art →</a></p></div>
+          <div class="fact"><div class="icon">🎵</div><p data-i18n="fact9">Music has been part of my life since childhood. I studied choir, piano, solfeggio, and music history.</p></div>
+          <div class="fact"><div class="icon">🧘</div><p data-i18n="fact10">I practice yoga, meditation, and mindfulness as a way to maintain balance, focus, and well-being.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="connect-section">
+      <div class="wrap connect-inner">
+        <svg class="connect-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.14 1.44-2.14 2.94v5.66H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56z"/></svg>
+        <p data-i18n="connectTexthtml">Let's connect on <a href="https://www.linkedin.com/in/olga-shtykova/" target="_blank" rel="noopener">LinkedIn</a> and explore opportunities to collaborate.</p>
+      </div>
+    </section>
+
+    <section class="quote-section">
+      <div class="wrap quote-inner">
+        <blockquote data-i18n="quoteText">"Behind every requirement is a person trying to solve a real problem. That's where I like to start."</blockquote>
+        <cite data-i18n="quoteAttribution">— Olga Shtykova</cite>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p data-i18n="footerText">© 2026 Olga Shtykova</p>
+      <p class="credit" data-i18n="footerCredit">Portrait photograph by a professional photographer; illustrations generated with ChatGPT (DALL·E).</p>
+    </div>
+  </footer>
+
+<script>
+(function(){
+  var titles = {
+    en: "Olga Shtykova — Business Analyst & AI-Fluent Technologist",
+    ru: "Ольга Штыкова — Бизнес-аналитик и специалист по ИИ"
+  };
+
+  var t = {
+    en: {
+      navAbout: "About", navWork: "What I Do", navFacts: "Facts",
+      aboutEyebrow: "Who I Am",
+      aboutHeading: "About Me",
+      aboutP1html: "Hi, I'm <strong>Olga Shtykova</strong> — a Business Analyst who enjoys bringing clarity to complexity. I work at the intersection of business and technology, helping stakeholders and delivery teams turn ideas into well-defined, practical solutions that create real value.",
+      aboutP2: "My path into business analysis wasn't a traditional one. I began my career as a .NET Software Engineer before transitioning into business analysis, giving me a strong technical foundation and the ability to communicate comfortably with both business stakeholders and development teams.",
+      aboutP3: "My background combines psychology, software engineering, and business analysis. Psychology shapes how I approach communication and collaboration, while my technical education helps me understand complex systems and contribute effectively throughout the software delivery lifecycle.",
+      aboutP4: "I'm also passionate about using AI to work more effectively. I regularly apply modern AI tools to streamline documentation, analyse business processes, map user journeys, and automate repetitive tasks — freeing up more time to focus on solving problems and delivering value.",
+      aboutP5: "I'm naturally curious and enjoy continuously learning new technologies, methodologies, and ways of improving how people and teams work together.",
+      aboutBadge: "Fluent in English · Native Russian",
+      workEyebrow: "Experience",
+      workHeading: "What I Do",
+      workIntro: "From building software to shaping solutions — a look at the projects that guided my transition from software engineering to business analysis.",
+      work1Title: "Ticketmaster UK — Business Analyst",
+      work1Meta: "EPAM Systems · Jun 2024 – Jun 2026",
+      work1Desc: "Helped bridge business needs and technical implementation across the full delivery lifecycle for one of the world's leading ticketing platforms. Led requirements coordination for an initiative enabling secure third-party API access, working closely with stakeholders, architects, developers, and QA to keep everyone aligned on complex functionality — bringing structure to ambiguity and documentation that let teams move forward with confidence.",
+      work2Title: "Ticketmaster UK — Software Engineer",
+      work2Meta: "EPAM Systems · Feb 2021 – Jun 2024",
+      work2Desc: "Spent over three years developing and maintaining services within Ticketmaster's event-driven microservices platform using ASP.NET/ASP.NET Core, delivering new functionality and resolving production issues for a system used by millions of customers. Maintained CI/CD pipelines, worked with SQL Server, supported AWS deployments, implemented automated testing, and monitored production — collaboration with business analysts and product managers that ultimately inspired my move into business analysis.",
+      work3Title: "Health and Wellness Portal — Business Analyst",
+      work3Meta: "EPAM Systems · Jan 2022 – Apr 2023",
+      work3Desc: "Joined an internal EPAM project as a Business Analyst alongside my engineering role, supporting an employee health and wellness platform. Gathered and refined requirements, prepared user stories and use cases, facilitated backlog refinement sessions, and worked closely with developers and QA — building my confidence in leading discussions and translating ideas into clear, actionable requirements.",
+      work4Title: "EPAM Training Portal (training.by) — Student Software Engineer",
+      work4Meta: "EPAM Systems · Nov 2020 – Feb 2021",
+      work4Desc: "My first opportunity to contribute to a real enterprise application: developed new functionality, fixed defects, and wrote automated tests using the .NET ecosystem while learning modern development practices in a collaborative team — a technical foundation that continues to support my work as a Business Analyst.",
+      factsEyebrow: "Beyond the CV",
+      factsHeading: "Interesting Facts",
+      fact3: "Lived in the USA for 10 years and in Denmark for 3 months; have also traveled to China, India, and several countries across Europe.",
+      fact8html: 'An artist at heart — I draw and paint in watercolor and oil. <a href="https://olga-shtykova.github.io/olgashtykova/" target="_blank" rel="noopener">View my art →</a>',
+      fact9: "Music has been part of my life since childhood. I studied choir, piano, solfeggio, and music history.",
+      fact10: "I practice yoga, meditation, and mindfulness as a way to maintain balance, focus, and well-being.",
+      connectTexthtml: 'Let\'s connect on <a href="https://www.linkedin.com/in/olga-shtykova/" target="_blank" rel="noopener">LinkedIn</a> and explore opportunities to collaborate.',
+      quoteText: "“Behind every requirement is a person trying to solve a real problem. That's where I like to start.”",
+      quoteAttribution: "— Olga Shtykova",
+      footerText: "© 2026 Olga Shtykova",
+      footerCredit: "Portrait photograph by a professional photographer; illustrations generated with ChatGPT (DALL·E).",
+    },
+    ru: {
+      navAbout: "Обо мне", navWork: "Чем я занимаюсь", navFacts: "Факты",
+      aboutEyebrow: "Кто я",
+      aboutHeading: "Обо мне",
+      aboutP1html: "Здравствуйте, я <strong>Ольга Штыкова</strong> — бизнес-аналитик, которой нравится превращать сложное в понятное. Я работаю на стыке бизнеса и технологий, помогая заинтересованным сторонам и командам разработки превращать идеи в чётко определённые, практичные решения, приносящие реальную ценность.",
+      aboutP2: "Мой путь в бизнес-анализ не был традиционным. Я начинала карьеру как .NET-разработчик, прежде чем перейти в бизнес-анализ, что дало мне прочную техническую базу и умение свободно общаться как с бизнес-заказчиками, так и с командами разработки.",
+      aboutP3: "Моё образование сочетает психологию, разработку ПО и бизнес-анализ. Психология определяет мой подход к общению и сотрудничеству, а техническое образование помогает понимать сложные системы и эффективно участвовать на всех этапах жизненного цикла разработки ПО.",
+      aboutP4: "Я также увлечена использованием ИИ для более эффективной работы. Я регулярно применяю современные ИИ-инструменты для оптимизации документации, анализа бизнес-процессов, построения карт пользовательских путей и автоматизации рутинных задач — это освобождает больше времени для решения задач и создания ценности.",
+      aboutP5: "Мне свойственно естественное любопытство, и я с удовольствием непрерывно изучаю новые технологии, методологии и способы улучшения взаимодействия людей и команд.",
+      aboutBadge: "Свободный английский · Родной русский",
+      workEyebrow: "Опыт",
+      workHeading: "Чем я занимаюсь",
+      workIntro: "От создания программного обеспечения к формированию решений — проекты, которые определили мой переход из разработки в бизнес-анализ.",
+      work1Title: "Ticketmaster UK — бизнес-аналитик",
+      work1Meta: "EPAM Systems · июнь 2024 – июнь 2026",
+      work1Desc: "Помогала соединять бизнес-потребности и техническую реализацию на всех этапах поставки для одной из ведущих в мире билетных платформ. Координировала требования для инициативы, обеспечившей безопасный доступ сторонних разработчиков через API, тесно сотрудничая с заинтересованными сторонами, архитекторами, разработчиками и QA — вносила структуру в сложные задачи и создавала документацию, которая помогала командам уверенно двигаться вперёд.",
+      work2Title: "Ticketmaster UK — инженер-разработчик",
+      work2Meta: "EPAM Systems · февраль 2021 – июнь 2024",
+      work2Desc: "Более трёх лет разрабатывала и поддерживала сервисы событийно-ориентированной микросервисной платформы Ticketmaster на ASP.NET/ASP.NET Core, реализуя новую функциональность и устраняя проблемы в продакшене для системы, которой пользуются миллионы клиентов. Поддерживала CI/CD-пайплайны, работала с SQL Server, сопровождала развёртывания в AWS, внедряла автоматизированное тестирование и мониторинг продакшена — тесное сотрудничество с бизнес-аналитиками и продакт-менеджерами в итоге вдохновило меня перейти в бизнес-анализ.",
+      work3Title: "Портал здоровья и благополучия — бизнес-аналитик",
+      work3Meta: "EPAM Systems · январь 2022 – апрель 2023",
+      work3Desc: "Совмещая эту роль с основной инженерной работой, присоединилась к внутреннему проекту EPAM в качестве бизнес-аналитика, поддерживая разработку корпоративной платформы здоровья и благополучия сотрудников. Собирала и уточняла требования, готовила пользовательские истории и use case'ы, проводила груминг бэклога и тесно работала с разработчиками и QA — это укрепило мою уверенность в проведении обсуждений и превращении идей в чёткие, применимые требования.",
+      work4Title: "Учебный портал EPAM (training.by) — инженер-разработчик, студент",
+      work4Meta: "EPAM Systems · ноябрь 2020 – февраль 2021",
+      work4Desc: "Мой первый опыт работы над реальным корпоративным приложением: разрабатывала новую функциональность, исправляла дефекты и писала автоматизированные тесты в экосистеме .NET, осваивая современные практики разработки в командной среде — этот опыт заложил техническую базу, которая до сих пор поддерживает мою работу бизнес-аналитиком.",
+      factsEyebrow: "Не только резюме",
+      factsHeading: "Интересные факты",
+      fact3: "Прожила 10 лет в США и 3 месяца в Дании; путешествовала по Китаю, Индии и многим странам Европы.",
+      fact8html: 'В душе художница — рисую акварелью и маслом. <a href="https://olga-shtykova.github.io/olgashtykova/" target="_blank" rel="noopener">Мои работы →</a>',
+      fact9: "Музыка была частью моей жизни с детства. Я занималась в хоре, играла на фортепиано, изучала сольфеджио и историю музыки.",
+      fact10: "Я практикую йогу, медитацию и осознанность, чтобы поддерживать баланс, концентрацию и внутреннее благополучие.",
+      connectTexthtml: 'Давайте свяжемся в <a href="https://www.linkedin.com/in/olga-shtykova/" target="_blank" rel="noopener">LinkedIn</a> и обсудим возможности для сотрудничества.',
+      quoteText: "«За каждым требованием стоит человек, пытающийся решить реальную проблему. Именно с этого я люблю начинать».",
+      quoteAttribution: "— Ольга Штыкова",
+      footerText: "© 2026 Ольга Штыкова",
+      footerCredit: "Портрет — работа профессионального фотографа; иллюстрации созданы с помощью ChatGPT (DALL·E).",
+    }
+  };
+
+  var htmlKeys = { fact8html: true, aboutP1html: true, connectTexthtml: true };
+
+  function applyLang(lang){
+    var dict = t[lang];
+    document.querySelectorAll('[data-i18n]').forEach(function(el){
+      var key = el.getAttribute('data-i18n');
+      if (!dict[key]) return;
+      if (htmlKeys[key]) { el.innerHTML = dict[key]; }
+      else { el.textContent = dict[key]; }
+    });
+    document.documentElement.setAttribute('lang', lang);
+    document.title = titles[lang];
+    document.querySelectorAll('.langswitch button').forEach(function(btn){
+      btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+    });
+  }
+
+  document.querySelectorAll('.langswitch button').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      applyLang(btn.getAttribute('data-lang'));
+    });
+  });
+
+  applyLang('en');
+})();
+</script>
+</body>
+</html>
