@@ -226,7 +226,7 @@
   /* ---------- Facts ---------- */
   .facts{ background: var(--paper); }
   .fact-grid{
-    display:grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+    display:grid; grid-template-columns: repeat(2, 1fr); gap: 20px;
   }
   .fact{
     border: 1px solid var(--line); border-radius: var(--radius);
@@ -239,7 +239,6 @@
   }
   .fact p{ margin:0; color: var(--ink-soft); font-size: 0.95rem; }
   .fact a{ font-weight:600; }
-  @media (max-width: 900px){ .fact-grid{ grid-template-columns: 1fr 1fr; } }
   @media (max-width: 560px){ .fact-grid{ grid-template-columns: 1fr; } }
 
   /* ---------- Connect ---------- */
