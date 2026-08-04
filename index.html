@@ -118,15 +118,56 @@
   :root[data-theme="dark"] .theme-toggle .icon-sun{ display:none; }
   :root[data-theme="dark"] .theme-toggle .icon-moon{ display:block; }
 
+  .nav-toggle{
+    display:none;
+    align-items:center; justify-content:center;
+    width: 36px; height: 36px;
+    border: 1px solid rgba(255,255,255,0.35);
+    border-radius: 50%;
+    background: rgba(255,255,255,0.08);
+    color: rgba(255,255,255,0.85);
+    cursor:pointer; padding:0;
+    transition: background 0.25s ease, color 0.25s ease;
+  }
+  .nav-toggle:hover{ color:#fff; background: rgba(255,255,255,0.18); }
+  .nav-toggle svg{ width:18px; height:18px; }
+  .nav-toggle .icon-close{ display:none; }
+  .nav-toggle[aria-expanded="true"] .icon-menu{ display:none; }
+  .nav-toggle[aria-expanded="true"] .icon-close{ display:block; }
+
   @media (max-width: 720px){
-    .topnav nav{ display:none; }
+    .topnav{ padding: 12px 16px; }
+    .topnav .brand{ font-size: 0.82rem; }
+    .nav-right{ gap: 0.4rem; }
+    .theme-toggle{ width: 44px; height: 44px; }
+    .langswitch button{ padding: 15px 10px; }
+    .nav-toggle{ display:flex; width: 44px; height: 44px; }
+    .topnav nav{
+      display:flex; flex-direction:column; gap:2px;
+      position:absolute; top:100%; left:0; right:0;
+      background: rgba(10,10,20,0.95);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      padding: 0 24px;
+      max-height:0; overflow:hidden; opacity:0;
+      transition: max-height 0.25s ease, opacity 0.2s ease, padding 0.25s ease;
+    }
+    .topnav nav.nav-open{
+      max-height: 260px; opacity:1;
+      padding: 8px 24px 20px;
+    }
+    .topnav nav a{
+      padding: 12px 4px;
+      font-size: 1rem;
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+    }
   }
 
   /* ---------- Hero ---------- */
   .hero{
     width: 100%;
     aspect-ratio: 1774 / 898;
-    background: url("images/image1.png") center/cover no-repeat;
+    background: url("images/image1.jpg") center/cover no-repeat;
   }
   @media (max-width: 720px){
     .hero{ aspect-ratio: 4 / 3; }
@@ -226,7 +267,7 @@
     min-height: 60vh;
     display:flex; align-items:center; justify-content:center;
     background-color:#0a0a14;
-    background-image:url("images/image4.png");
+    background-image:url("images/image4.jpg");
     background-position:center;
     background-size:contain;
     background-repeat:no-repeat;
@@ -249,7 +290,7 @@
     padding: 34px 0; text-align:center; font-size: 0.9rem;
   }
   footer p{ margin:0; }
-  footer .credit{ margin-top: 8px; font-size: 0.78rem; color: rgba(255,255,255,0.45); }
+  footer .credit{ margin-top: 8px; font-size: 0.78rem; color: rgba(255,255,255,0.55); }
   footer a{ color: #C9C1FF; font-weight:600; }
 </style>
 
@@ -267,9 +308,9 @@
 <body>
 
   <div class="topnav">
-    <span class="brand">Olga Shtykova</span>
+    <span class="brand" data-i18n="brand">Olga Shtykova</span>
     <div class="nav-right">
-      <nav>
+      <nav id="primaryNav">
         <a href="#about" data-i18n="navAbout">About</a>
         <a href="#work" data-i18n="navWork">What I Do</a>
         <a href="#facts" data-i18n="navFacts">Facts</a>
@@ -282,6 +323,10 @@
         <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
         <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
       </button>
+      <button type="button" class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="primaryNav">
+        <svg class="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
     </div>
   </div>
 
@@ -291,7 +336,7 @@
     <section class="about" id="about">
       <div class="wrap about-grid">
         <div class="about-photo">
-          <img src="images/olga.JPG" alt="Portrait of Olga Shtykova">
+          <img src="images/olga.JPG" alt="Portrait of Olga Shtykova" loading="lazy">
         </div>
         <div class="about-text">
           <div class="eyebrow" data-i18n="aboutEyebrow">Who I Am</div>
@@ -309,10 +354,10 @@
     <section class="work" id="work">
       <div class="wrap">
         <div class="work-head">
-          <img src="images/image2.png" alt="Projects icon">
+          <img src="images/image2.png" alt="Projects icon" loading="lazy">
           <div>
             <div class="eyebrow" data-i18n="workEyebrow">Experience</div>
-            <h2 class="section-title" style="margin-bottom:0" data-i18n="workHeading">What I Do</h2>
+            <h2 class="section-title" style="margin-bottom:0" data-i18n="workHeading">My Journey</h2>
           </div>
         </div>
         <p class="work-intro" data-i18n="workIntro">From building software to shaping solutions — a look at the projects that guided my transition from software engineering to business analysis.</p>
@@ -345,7 +390,7 @@
     <section class="facts" id="facts">
       <div class="wrap">
         <div class="work-head">
-          <img src="images/image3.png" alt="Requirements checklist icon">
+          <img src="images/image3.png" alt="Requirements checklist icon" loading="lazy">
           <div>
             <div class="eyebrow" data-i18n="factsEyebrow">Beyond the CV</div>
             <h2 class="section-title" style="margin-bottom:0" data-i18n="factsHeading">Interesting Facts</h2>
@@ -391,6 +436,7 @@
 
   var t = {
     en: {
+      brand: "Olga Shtykova",
       navAbout: "About", navWork: "What I Do", navFacts: "Facts",
       aboutEyebrow: "Who I Am",
       aboutHeading: "About Me",
@@ -401,7 +447,7 @@
       aboutP5: "I'm naturally curious and enjoy continuously learning new technologies, methodologies, and ways of improving how people and teams work together.",
       aboutBadge: "Fluent in English · Native Russian",
       workEyebrow: "Experience",
-      workHeading: "What I Do",
+      workHeading: "My Journey",
       workIntro: "From building software to shaping solutions — a look at the projects that guided my transition from software engineering to business analysis.",
       work1Title: "Ticketmaster UK — Business Analyst",
       work1Meta: "EPAM Systems · Jun 2024 – Jun 2026",
@@ -428,6 +474,7 @@
       footerCredit: "Portrait photograph by a professional photographer; illustrations generated with ChatGPT (DALL·E).",
     },
     ru: {
+      brand: "Ольга Штыкова",
       navAbout: "Обо мне", navWork: "Чем я занимаюсь", navFacts: "Факты",
       aboutEyebrow: "Кто я",
       aboutHeading: "Обо мне",
@@ -438,7 +485,7 @@
       aboutP5: "Мне свойственно естественное любопытство, и я с удовольствием непрерывно изучаю новые технологии, методологии и способы улучшения взаимодействия людей и команд.",
       aboutBadge: "Свободный английский · Родной русский",
       workEyebrow: "Опыт",
-      workHeading: "Чем я занимаюсь",
+      workHeading: "Мой путь",
       workIntro: "От создания программного обеспечения к формированию решений — проекты, которые определили мой переход из разработки в бизнес-анализ.",
       work1Title: "Ticketmaster UK — бизнес-аналитик",
       work1Meta: "EPAM Systems · июнь 2024 – июнь 2026",
@@ -508,6 +555,34 @@
       document.documentElement.setAttribute('data-theme', next);
       try{ localStorage.setItem('theme', next); }catch(e){}
       applyThemeButtonState(next);
+    });
+  })();
+</script>
+
+<script>
+  (function(){
+    var navToggle = document.getElementById('navToggle');
+    var nav = document.getElementById('primaryNav');
+
+    function closeNav(){
+      nav.classList.remove('nav-open');
+      navToggle.setAttribute('aria-expanded', 'false');
+      navToggle.setAttribute('aria-label', 'Open menu');
+    }
+    function openNav(){
+      nav.classList.add('nav-open');
+      navToggle.setAttribute('aria-expanded', 'true');
+      navToggle.setAttribute('aria-label', 'Close menu');
+    }
+
+    navToggle.addEventListener('click', function(){
+      if (nav.classList.contains('nav-open')) { closeNav(); } else { openNav(); }
+    });
+    nav.addEventListener('click', function(e){
+      if (e.target.tagName === 'A') { closeNav(); }
+    });
+    window.addEventListener('resize', function(){
+      if (window.innerWidth > 720) { closeNav(); }
     });
   })();
 </script>
